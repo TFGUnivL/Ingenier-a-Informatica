@@ -19,6 +19,7 @@ public class JwtService {
     private static final String ROLES = "roles";
     private static final String ISSUER = "es-upm-miw-spring";
     private static final int EXPIRES_IN_MILLISECOND = 3600000;
+    private static final int NOT_BEFORE_IN_MILISECOND = 2000;
     private static final String SECRET = "clave-secreta-test";
 
 
@@ -26,7 +27,7 @@ public class JwtService {
         return JWT.create()
                 .withIssuer(ISSUER)
                 .withIssuedAt(new Date())
-                .withNotBefore(new Date())
+                .withNotBefore(new Date(System.currentTimeMillis()-NOT_BEFORE_IN_MILISECOND))
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRES_IN_MILLISECOND))
                 .withClaim(USER, user)
                 .withClaim(NAME, name)
