@@ -19,14 +19,14 @@ public class JwtService {
     private static final String ROLES = "roles";
     private static final String ISSUER = "es-upm-miw-spring";
     private static final int EXPIRES_IN_MILLISECOND = 3600000;
-    private static final int NOT_BEFORE_IN_MILISECOND = 200000;
+    private static final int NOT_BEFORE_IN_MILISECOND = 20000;
     private static final String SECRET = "clave-secreta-test";
 
 
     public String createToken(String user, String name, String[] roles) {
         return JWT.create()
                 .withIssuer(ISSUER)
-                .withIssuedAt(new Date())
+                .withIssuedAt(new Date(System.currentTimeMillis()-NOT_BEFORE_IN_MILISECOND))
                 .withNotBefore(new Date(System.currentTimeMillis()-NOT_BEFORE_IN_MILISECOND))
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRES_IN_MILLISECOND))
                 .withClaim(USER, user)
