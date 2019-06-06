@@ -19,7 +19,7 @@ public class JwtService {
     private static final String ROLES = "roles";
     private static final String ISSUER = "es-upm-miw-spring";
     private static final int EXPIRES_IN_MILLISECOND = 3600000;
-    private static final int NOT_BEFORE_IN_MILISECOND = 2000;
+    private static final int NOT_BEFORE_IN_MILISECOND = 200000;
     private static final String SECRET = "clave-secreta-test";
 
 
